@@ -1,0 +1,82 @@
+Primeira parte – Class CadastrosLivros
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.cadastroslivros;
+
+/**
+ *
+ * @author matil
+ */
+public class CadastrosLivros {
+    private String TituloLivro;
+    private String NomeAutor;
+    private int AnoPublicacao;
+    private int QuantidadesPaginas;
+    
+public CadastrosLivros (String TituloLivro, String NomeAutor, int AnoPublicacao, int QuantidadesPaginas) {
+    this.TituloLivro=TituloLivro;
+    this.NomeAutor=NomeAutor;
+    this.AnoPublicacao=AnoPublicacao;
+    this.QuantidadesPaginas=QuantidadesPaginas;
+}
+public String getTituloLivro () {
+    return TituloLivro;
+}
+public String getNomeAutor () {
+    return NomeAutor;
+}
+public int getAnoPublicacao () {
+    return AnoPublicacao;
+}
+public int getQuantidadesPaginas () {
+    return QuantidadesPaginas;
+    }
+public String toString () {
+    return  "TituloLivro: " +TituloLivro+ ", NomeAutor: " +NomeAutor+ ", AnoPublicacao: " +AnoPublicacao+ ", QuantidadesPaginas: " +QuantidadesPaginas;
+    }
+}
+Segunda parte – GerenciadorDeLivros.Main
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package com.mycompany.cadastroslivros;
+import java.util.ArrayList;
+import java.util.List;
+/**
+ *
+ * @author matil
+ */
+public class GerenciadorDeLivros {
+    private List <CadastrosLivros> Livros;
+    
+    public GerenciadorDeLivros () {
+        this.Livros=new ArrayList <>();
+    }
+    public void CadastrarLivros (String TituloLivro, String NomeAutor, int AnoPublicacao, int QuantidadesPaginas ) {
+        CadastrosLivros livros = new CadastrosLivros (TituloLivro, NomeAutor, AnoPublicacao, QuantidadesPaginas);
+        Livros.add(livros);
+    }
+    public void ApresentarLivros (){
+        if (Livros.isEmpty()){
+            System.out.println("Não há livros cadastrados");
+        }else{
+            for(CadastrosLivros livros : Livros) {
+                System.out.println(livros);
+            }
+        }
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        GerenciadorDeLivros gerenciador = new GerenciadorDeLivros ();
+        
+        gerenciador.CadastrarLivros("Harry Potter e o Cálice de Fogo",”J.K. Rowling”,2000,734);
+        gerenciador.CadastrarLivros("Crepúsculo",”Stephenie Meyer”,2005,498);
+        gerenciador.CadastrarLivros("Diário de um Banana","Jeff Kinney",2007,224);
+    }
+    
+}
